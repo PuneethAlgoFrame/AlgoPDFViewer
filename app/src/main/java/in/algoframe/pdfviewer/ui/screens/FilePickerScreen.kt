@@ -13,23 +13,37 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import `in`.algoframe.pdfviewer.utils.RecentPdfManager
+import `in`.algoframe.pdfviewer.R
+import `in`.algoframe.pdfviewer.data.viewmodel.AuthViewModel
+import `in`.algoframe.pdfviewer.navigation.Routes
+import `in`.algoframe.pdfviewer.ui.theme.PurpleGrey40
 import java.io.File
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun FilePickerScreen(
-    onPdfSelected: (String) -> Unit
+    navController: NavHostController,
+    onPdfSelected: (String) -> Unit,
+    authViewModel: AuthViewModel = viewModel()
 ) {
     val context = LocalContext.current
-    
+    // Inside FilePickerScreen composable, near the top
+    var showLogoutDialog by remember { mutableStateOf(false) }
+
     val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
         listOf(
             Manifest.permission.READ_MEDIA_VIDEO,
@@ -61,19 +75,67 @@ fun FilePickerScreen(
             permissionsState.launchMultiplePermissionRequest()
         }
     }
+
+    // Inside the Column of the Scaffold, after the Row containing the title and icon
+    if (showLogoutDialog) {
+        AlertDialog(
+            onDismissRequest = { showLogoutDialog = false }, // Dismiss if user clicks outside
+            title = { Text(stringResource(R.string.confirm_logout)) },
+            text = { Text(stringResource(R.string.are_you_sure_you_want_to_log_out)) },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        showLogoutDialog = false // Close the dialog
+                        authViewModel.signOut(context,
+                            context.getString(R.string.default_web_client_id))  // Perform the sign out
+                        navController.navigate(Routes.REGISTER) {
+                            popUpTo(Routes.HOME) { inclusive = true }
+                        }
+                    }
+                ) {
+                    Text(stringResource(R.string.logout))
+                }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = { showLogoutDialog = false } // Just close the dialog
+                ) {
+                    Text(stringResource(R.string.cancel), color = Color.Black.copy(0.5f))
+                }
+            }
+        )
+    }
+
     Scaffold { innerPadding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(16.dp)
+                .padding(21.dp)
         ) {
-            Text(
-                text = "PDF Reader",
-                style = MaterialTheme.typography.headlineMedium,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
+
+            Row( modifier = Modifier
+                .fillMaxWidth())
+            {
+                Text(
+                    color = PurpleGrey40,
+                    text = stringResource(R.string.app_name
+                    ),
+                    style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(bottom = 16.dp)
+                )
+
+                Spacer(modifier = Modifier.weight(1f))
+
+                // Logout Icon
+                IconButton(onClick = { showLogoutDialog = true}) {
+                    Icon(
+                        imageVector = Icons.Default.PowerSettingsNew,
+                        contentDescription = "Logout"
+                    )
+                }
+            }
 
             if (!permissionsState.allPermissionsGranted) {
                 Card(
@@ -102,7 +164,7 @@ fun FilePickerScreen(
                     }
                 }
             }
-
+            Spacer(modifier = Modifier.height(12.dp))
             Button(
                 onClick = { filePickerLauncher.launch("application/pdf") },
                 modifier = Modifier.fillMaxWidth(),
@@ -110,13 +172,13 @@ fun FilePickerScreen(
             ) {
                 Icon(Icons.Default.FolderOpen, contentDescription = null)
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("Select PDF File")
+                Text(stringResource(R.string.select_pdf_file))
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = "Recent PDFs",
+                text = stringResource(R.string.recent_pdfs),
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
@@ -162,7 +224,7 @@ fun RecentPdfList(
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = "No PDF files found",
+                    text = stringResource(R.string.no_pdf_files_found),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -176,9 +238,9 @@ fun RecentPdfList(
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { 
+                        .clickable {
                             recentPdfManager.addRecentPdf(file.absolutePath)
-                            onPdfSelected(file.absolutePath) 
+                            onPdfSelected(file.absolutePath)
                         }
                 ) {
                     Row(

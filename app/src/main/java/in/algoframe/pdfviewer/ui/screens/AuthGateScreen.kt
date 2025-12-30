@@ -1,4 +1,5 @@
 import android.util.Log
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -18,7 +19,7 @@ fun AuthGateScreen(
     when (authState) {
         AuthState.Loading -> {
             Log.w("AuthGateScreen", "Loading")
-            //SplashUI()
+            CircularProgressIndicator()
         }
 
         AuthState.Authenticated -> {
@@ -34,5 +35,7 @@ fun AuthGateScreen(
                 popUpTo(Routes.AUTH_GATE) { inclusive = true }
             }
         }
+
+        else -> { }
     }
 }

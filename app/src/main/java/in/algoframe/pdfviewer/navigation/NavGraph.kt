@@ -1,7 +1,6 @@
 package `in`.algoframe.pdfviewer.navigation
 
 import AuthGateScreen
-import android.util.Log
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
@@ -74,6 +73,7 @@ fun AppNavHost() {
 
         composable(Routes.HOME) {
             FilePickerScreen(
+                navController = navController,
                 onPdfSelected = { pdfPath ->
                     val encodedPdfPath = URLEncoder.encode(pdfPath, StandardCharsets.UTF_8.toString())
                     navController.navigate(Routes.PREVIEW + "/$encodedPdfPath")
