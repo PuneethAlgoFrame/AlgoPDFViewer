@@ -1,3 +1,6 @@
+import java.util.Properties
+import kotlin.apply
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -9,6 +12,22 @@ android {
     namespace = "in.algoframe.pdfviewer"
     compileSdk {
         version = release(36)
+    }
+    // Load properties from local.properties
+    val localProperties = Properties().apply {
+        val localFile = rootProject.file("local.properties")
+        if (localFile.exists()) {
+            localFile.reader().use { load(it) }
+        }
+    }
+
+    signingConfigs {
+        create("release") {
+            storeFile = file("/Users/puneeth/AndroidStudioProjects/AlgoPDFViewer/app/keystore/algoPDF.keystore")
+            storePassword = localProperties.getProperty("storePassword")
+            keyAlias = localProperties.getProperty("keyAlias")
+            keyPassword = localProperties.getProperty("keyPassword")
+        }
     }
 
     defaultConfig {
@@ -22,12 +41,17 @@ android {
     }
 
     buildTypes {
+        debug {
+            isMinifyEnabled = false
+        }
         release {
             isMinifyEnabled = false
+            isShrinkResources = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {
@@ -80,10 +104,11 @@ dependencies {
     
     // Activity Result for file picking
     implementation(libs.activity.result)
-    
+
     // Coil for image loading
     implementation(libs.coil.compose)
-    
+    implementation(libs.androidx.navigation.compose)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -92,5 +117,15 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.10.0")
+    // in app/build.gradle.kts
     implementation(platform("com.google.firebase:firebase-bom:34.7.0"))
+    implementation("com.google.firebase:firebase-auth") // Note: Use firebase
+    // For Google Sign-In
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
+
+    // For coroutine support with Firebase
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.0")
+
+    implementation(libs.androidx.security.crypto)
 }

@@ -14,6 +14,8 @@ exoPlayer = "2.19.1"
 accompanistPermissions = "0.34.0"
 activityResult = "1.3.1"
 coil = "2.5.0"
+securityCrypto = "1.1.0"
+navigationCompose = "2.9.6"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -36,6 +38,8 @@ exoplayer = { group = "com.google.android.exoplayer", name = "exoplayer", versio
 accompanist-permissions = { group = "com.google.accompanist", name = "accompanist-permissions", version.ref = "accompanistPermissions" }
 activity-result = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityResult" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+androidx-security-crypto = { module = "androidx.security:security-crypto", version.ref = "securityCrypto" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
