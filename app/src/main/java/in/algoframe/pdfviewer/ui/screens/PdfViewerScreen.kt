@@ -1,4 +1,4 @@
-package com.algoframe.pdfreader.ui.screens
+package `in`.algoframe.pdfviewer.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -8,11 +8,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.algoframe.pdfreader.data.MediaFile
-import com.algoframe.pdfreader.data.MediaType
-import com.algoframe.pdfreader.ui.components.AudioPlayer
-import com.algoframe.pdfreader.ui.components.PdfViewer
-import com.algoframe.pdfreader.ui.components.VideoPlayer
+import `in`.algoframe.pdfviewer.data.MediaFile
+import `in`.algoframe.pdfviewer.data.MediaType
+import `in`.algoframe.pdfviewer.ui.components.AudioPlayer
+import `in`.algoframe.pdfviewer.ui.components.PdfViewer
+import `in`.algoframe.pdfviewer.ui.components.VideoPlayer
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -1,4 +1,4 @@
-package com.algoframe.pdfreader
+package `in`.algoframe.pdfviewer
 
 import org.junit.Test
 

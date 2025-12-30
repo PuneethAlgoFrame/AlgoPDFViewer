@@ -1,4 +1,4 @@
-package com.algoframe.pdfreader.ui.components
+package `in`.algoframe.pdfviewer.ui.components
 
 import android.graphics.Bitmap
 import android.graphics.pdf.PdfRenderer
@@ -15,16 +15,15 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.algoframe.pdfreader.data.MediaFile
-import com.algoframe.pdfreader.data.MediaType
-import com.algoframe.pdfreader.utils.PdfMediaExtractor
+import `in`.algoframe.pdfviewer.data.MediaFile
+import `in`.algoframe.pdfviewer.data.MediaType
+import `in`.algoframe.pdfviewer.utils.PdfMediaExtractor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

@@ -96,7 +96,7 @@ Comprehensive technical documentation for the PDF Reader Android application.
 
 ### MainActivity
 
-**Location**: `com.algoframe.pdfreader.MainActivity`
+**Location**: `in.algoframe.pdfreader.MainActivity`
 
 **Purpose**: Application entry point and root composable setup.
 
@@ -126,7 +126,7 @@ class MainActivity : ComponentActivity() {
 
 ### PDFReaderApp
 
-**Location**: `com.algoframe.pdfreader.MainActivity.PDFReaderApp`
+**Location**: `in.algoframe.pdfreader.MainActivity.PDFReaderApp`
 
 **Purpose**: Root composable that manages screen navigation.
 
@@ -137,7 +137,7 @@ class MainActivity : ComponentActivity() {
 
 ### FilePickerScreen
 
-**Location**: `com.algoframe.pdfreader.ui.screens.FilePickerScreen`
+**Location**: `in.algoframe.pdfreader.ui.screens.FilePickerScreen`
 
 **Purpose**: Screen for PDF file selection and recent PDFs display.
 
@@ -166,7 +166,7 @@ val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
 ### PdfViewerScreen
 
-**Location**: `com.algoframe.pdfreader.ui.screens.PdfViewerScreen`
+**Location**: `in.algoframe.pdfreader.ui.screens.PdfViewerScreen`
 
 **Purpose**: Main PDF viewing screen with media playback.
 
@@ -183,7 +183,7 @@ val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
 ### PdfViewer Component
 
-**Location**: `com.algoframe.pdfreader.ui.components.PdfViewer`
+**Location**: `in.algoframe.pdfreader.ui.components.PdfViewer`
 
 **Purpose**: Core PDF rendering component.
 
@@ -216,7 +216,7 @@ page.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
 
 ### MediaFile
 
-**Location**: `com.algoframe.pdfreader.data.MediaFile`
+**Location**: `in.algoframe.pdfreader.data.MediaFile`
 
 **Purpose**: Represents an extracted media file from a PDF.
 
@@ -240,7 +240,7 @@ data class MediaFile(
 
 ### AnnotationRect
 
-**Location**: `com.algoframe.pdfreader.data.AnnotationRect`
+**Location**: `in.algoframe.pdfreader.data.AnnotationRect`
 
 **Purpose**: Represents a rectangle in PDF coordinates.
 
@@ -261,7 +261,7 @@ data class AnnotationRect(
 
 ### AudioSegmentMapping
 
-**Location**: `com.algoframe.pdfreader.data.AudioSegmentMapping`
+**Location**: `in.algoframe.pdfreader.data.AudioSegmentMapping`
 
 **Purpose**: External mapping for audio segments with time ranges.
 
@@ -293,7 +293,7 @@ data class SegmentMapping(
 
 ### PdfMediaExtractor
 
-**Location**: `com.algoframe.pdfreader.utils.PdfMediaExtractor`
+**Location**: `in.algoframe.pdfreader.utils.PdfMediaExtractor`
 
 **Purpose**: Extracts embedded media files from PDF documents.
 
@@ -419,7 +419,7 @@ fun contains(x: Float, y: Float, pageHeight: Float): Boolean {
 
 ### AudioPlayer
 
-**Location**: `com.algoframe.pdfreader.ui.components.AudioPlayer`
+**Location**: `in.algoframe.pdfreader.ui.components.AudioPlayer`
 
 **Technology**: ExoPlayer 2.19.1
 
@@ -447,7 +447,7 @@ exoPlayer.playbackParameters = PlaybackParameters(1.0f, 1.0f)
 
 ### VideoPlayer
 
-**Location**: `com.algoframe.pdfreader.ui.components.VideoPlayer`
+**Location**: `in.algoframe.pdfreader.ui.components.VideoPlayer`
 
 **Technology**: ExoPlayer with PlayerView
 

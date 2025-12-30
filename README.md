@@ -308,7 +308,7 @@ Manages recently opened PDF files using SharedPreferences.
 
 ### App Configuration
 
-**Package Name**: `com.algoframe.pdfreader`
+**Package Name**: `in.algoframe.pdfreader`
 
 **Min SDK**: 24 (Android 7.0)
 

@@ -1,10 +1,8 @@
-package com.algoframe.pdfreader.ui.screens
+package `in`.algoframe.pdfviewer.ui.screens
 
 import android.Manifest
-import android.content.Intent
 import android.net.Uri
 import android.os.Build
-import android.os.Environment
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
@@ -22,7 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
-import com.algoframe.pdfreader.utils.RecentPdfManager
+import `in`.algoframe.pdfviewer.utils.RecentPdfManager
 import java.io.File
 
 @OptIn(ExperimentalPermissionsApi::class)

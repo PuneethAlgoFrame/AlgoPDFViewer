@@ -1,4 +1,4 @@
-package com.algoframe.pdfreader.ui.components
+package `in`.algoframe.pdfviewer.ui.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons

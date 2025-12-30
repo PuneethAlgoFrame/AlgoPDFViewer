@@ -1,6 +1,4 @@
-package com.algoframe.pdfreader.data
-
-import com.algoframe.pdfreader.data.AnnotationRect
+package `in`.algoframe.pdfviewer.data
 
 /**
  * External mapping for audio segments when PDF doesn't have MediaClip time ranges

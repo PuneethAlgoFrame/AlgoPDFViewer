@@ -1,4 +1,4 @@
-package com.algoframe.pdfreader.utils
+package `in`.algoframe.pdfviewer.utils
 
 import android.content.Context
 import android.content.SharedPreferences

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "314788802474",
+    "project_id": "algopdfviewer",
+    "storage_bucket": "algopdfviewer.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314788802474:android:4fe00bf329c17c463185d3",
+        "android_client_info": {
+          "package_name": "in.algoframe.pdfviewer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdzt2DGgLfSkPjK3yUpFazDxi40L2rFq8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

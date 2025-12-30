@@ -1,11 +1,10 @@
-package com.algoframe.pdfreader.utils
+package `in`.algoframe.pdfviewer.utils
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.media.MediaMetadataRetriever
-import com.algoframe.pdfreader.data.AnnotationRect
-import com.algoframe.pdfreader.data.MediaFile
-import com.algoframe.pdfreader.data.MediaType
+import `in`.algoframe.pdfviewer.data.AnnotationRect
+import `in`.algoframe.pdfviewer.data.MediaFile
+import `in`.algoframe.pdfviewer.data.MediaType
 import com.tom_roush.pdfbox.pdmodel.PDDocument
 import com.tom_roush.pdfbox.pdmodel.PDPage
 import com.tom_roush.pdfbox.pdmodel.common.PDStream

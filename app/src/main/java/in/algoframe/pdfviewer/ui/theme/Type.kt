@@ -1,4 +1,4 @@
-package com.algoframe.pdfreader.ui.theme
+package `in`.algoframe.pdfviewer.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

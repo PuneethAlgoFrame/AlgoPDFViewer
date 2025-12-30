@@ -1,10 +1,10 @@
-package com.algoframe.pdfreader.utils
+package `in`.algoframe.pdfviewer.utils
 
 import android.content.Context
 import android.util.Log
-import com.algoframe.pdfreader.data.AudioSegmentMapping
-import com.algoframe.pdfreader.data.PageSegments
-import com.algoframe.pdfreader.data.SegmentMapping
+import `in`.algoframe.pdfviewer.data.AudioSegmentMapping
+import `in`.algoframe.pdfviewer.data.PageSegments
+import `in`.algoframe.pdfviewer.data.SegmentMapping
 import org.json.JSONObject
 import java.io.File
 import java.io.InputStream
